@@ -1,0 +1,45 @@
+    # OWL Lifecycle
+# it aims to definine minimal set of ontologies helping to manage Ontology lifecycle
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+@base <https://github.com/kardigen/ontologies/versioning> .
+
+<Version>
+    a owl:Class .
+
+<SemanticVersion_2_0_0>
+    rdfs:comment    "Semantic versioning based on https://semver.org/" ;
+    rdfs:subClassOf <Version> ;
+    owl:versionInfo "2.0.0".
+
+<MajorVersionNumber>
+    a           owl:ObjectProperty;
+    rdfs:domain <SemanticVersion_2_0_0> ;
+    rdfs:range  xsd:nonNegativeInteger  .
+
+<MinorVersionNumber>
+    a           owl:ObjectProperty ;
+    rdfs:domain <SemanticVersion_2_0_0> ;
+    rdfs:range  xsd:nonNegativeInteger .
+
+<PatchVersionNumber>
+    a           owl:ObjectProperty ;
+    rdfs:domain <SemanticVersion_2_0_0> ;
+    rdfs:range  xsd:nonNegativeInteger .
+
+<PreReleaseAdnotation>
+    a           owl:ObjectProperty ;
+    rdfs:domain <SemanticVersion_2_0_0> ;
+    rdfs:range  [ a                    rdfs:Datatype ;
+                  owl:onDatatype       xsd:string ;
+                  owl:withRestrictions ( [ xsd:pattern "[0-9A-Za-z-]*" ] ) ] .
+
+<BuildAdnotation>
+    a           owl:ObjectProperty ;
+    rdfs:domain <SemanticVersion_2_0_0> ;
+    rdfs:range  [ a                    rdfs:Datatype ;
+                  owl:onDatatype       xsd:string ;
+                  owl:withRestrictions ( [ xsd:pattern "[0-9A-Za-z-]*" ] ) ] .

@@ -1,2 +1,3 @@
-# ontologies
-Common RDF/OWL2 ontologies
+# Ontologies 
+A set of common RDF/OWL2 ontologies
+

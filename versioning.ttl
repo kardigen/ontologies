@@ -1,5 +1,5 @@
     # OWL Lifecycle
-# it aims to definine minimal set of ontologies helping to manage Ontology lifecycle
+# it aims to defines minimal set of ontologies helping to manage Ontology lifecycle
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
@@ -8,38 +8,38 @@
 @base <https://github.com/kardigen/ontologies/versioning> .
 
 <Version>
-    a owl:Class .
+    a rdfs:Datatype .
 
 <SemanticVersion_2_0_0>
     rdfs:comment    "Semantic versioning based on https://semver.org/" ;
     rdfs:subClassOf <Version> ;
     owl:versionInfo "2.0.0".
 
-<MajorVersionNumber>
-    a           owl:ObjectProperty;
+<majorVersionNumber>
+    a           owl:DatatypeProperty;
     rdfs:domain <SemanticVersion_2_0_0> ;
     rdfs:range  xsd:nonNegativeInteger  .
 
-<MinorVersionNumber>
-    a           owl:ObjectProperty ;
+<minorVersionNumber>
+    a           owl:DatatypeProperty ;
     rdfs:domain <SemanticVersion_2_0_0> ;
     rdfs:range  xsd:nonNegativeInteger .
 
-<PatchVersionNumber>
-    a           owl:ObjectProperty ;
+<patchVersionNumber>
+    a           owl:DatatypeProperty ;
     rdfs:domain <SemanticVersion_2_0_0> ;
     rdfs:range  xsd:nonNegativeInteger .
 
-<PreReleaseAdnotation>
-    a           owl:ObjectProperty ;
+<prereleaseAdnotation>
+    a           owl:DatatypeProperty ;
     rdfs:domain <SemanticVersion_2_0_0> ;
     rdfs:range  [ a                    rdfs:Datatype ;
                   owl:onDatatype       xsd:string ;
-                  owl:withRestrictions ( [ xsd:pattern "[0-9A-Za-z-]*" ] ) ] .
+                  owl:withRestrictions ( [ xsd:string "[0-9A-Za-z-]*" ] ) ] .
 
-<BuildAdnotation>
-    a           owl:ObjectProperty ;
+<buildAdnotation>
+    a           owl:DatatypeProperty ;
     rdfs:domain <SemanticVersion_2_0_0> ;
     rdfs:range  [ a                    rdfs:Datatype ;
                   owl:onDatatype       xsd:string ;
-                  owl:withRestrictions ( [ xsd:pattern "[0-9A-Za-z-]*" ] ) ] .
+                  owl:withRestrictions ( [ xsd:string "[0-9A-Za-z-]*" ] ) ] .

@@ -5,7 +5,9 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-@base <https://github.com/kardigen/ontologies/versioning> .
+@base <https://kardigen.github.io/ontologies/versioning.ttl> .
+
+<https://kardigen.github.io/ontologies/versioning.ttl> a owl:Ontology .
 
 <Version>
     a rdfs:Datatype .

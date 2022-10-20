@@ -1,0 +1,101 @@
+# Domain Driven Design Ontology
+# file defines common ontologies used in Domain Driven Design
+# it aims to define minimal set on concepts based on which other ontologies can be build.
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ver: <https://kardigen.github.io/ontologies/versioning.ttl> .
+
+@base <https://kardigen.github.io/ontologies/DDD.ttl> .
+
+<DomainDesign>
+    a owl:Class .
+
+<DesignVersion>
+    a           owl:ObjectProperty ;
+    rdfs:domain <DomainDesign> ;
+    rdfs:range  ver:Version .
+
+<StrategicDomainDesign>
+    rdfs:subClassOf <DomainDesign> .
+
+<ModelDrivenDomainDesign>
+    rdfs:subClassOf <DomainDesign> .
+
+<Model>
+    a owl:Class .
+
+<ModelObject>
+    a owl:Class .
+
+<isDefinedBy>
+    a           owl:ObjectProperty ;
+    rdfs:domain <Model> ;
+    rdfs:range  <ModelObject>
+.
+
+<creates>
+    a           owl:ObjectProperty ;
+    rdfs:domain <DomainDesign> ;
+    rdfs:range  <Model> .
+
+<DomainModel>
+    rdfs:subClassOf <Model> .
+
+<Entity>
+    a            <ModelObject> ;
+    rdfs:comment "Object representing a business concept identified by artificial identity." .
+
+<EntityReference>
+    a            owl:Class ;
+    rdfs:comment "Object responsible for identifying Entity" .
+
+<identifiedWith>
+    a           owl:ObjectProperty ;
+    rdfs:domain <Entity> ;
+    rdfs:range  <EntityReference> .
+
+<AggregateRoot>
+    rdfs:subClassOf <Entity> ;
+    rdfs:comment    "Defines aggregate root entity" .
+
+<Aggregate>
+    rdfs:subClassOf <ModelObject> ;
+    rdfs:comment    "Defines aggregate bounder" .
+
+<isolates>
+    a            owl:ObjectProperty ;
+    rdfs:domain  <Aggregate> ;
+    rdfs:range   <Enrity> ;
+    rdfs:comment "Groups entities into Aggregate" .
+
+<ValueObject>
+    a            <ModelObject> ;
+    rdfs:comment "Object representing a business concept identified its properties."
+.
+
+<Module>
+    a            <ModelObject> ;
+    rdfs:comment "Organized set of objects."
+.
+
+<Factory>
+    a            <ModelObject> ;
+    rdfs:comment "Generator for entities."
+.
+
+<Repository>
+    a            <ModelObject> ;
+    rdfs:comment "Access point for entities."
+.
+
+<DomainService>
+    a            <ModelObject> ;
+    rdfs:comment "Domain orchestrator"
+.
+
+<StrategicDomainModel>
+    rdfs:subClassOf <Model> .
+
+
